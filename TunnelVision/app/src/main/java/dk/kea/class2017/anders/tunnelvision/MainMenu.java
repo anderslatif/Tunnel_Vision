@@ -1,5 +1,6 @@
 package dk.kea.class2017.anders.tunnelvision;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -17,8 +20,21 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);*/
 
         // todo for testing we go directly to the game instead of the main menu this should be removed some time in the future
+        callGameActivity(savedInstanceState);
+    }
+
+    public void callGameActivity(Bundle savedInstanceState) {
+        //Remove title bar
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        //Remove notification bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        Intent intent = new Intent(this, GameActivity.class);
+        this.startActivity(intent);
     }
 
     @Override
