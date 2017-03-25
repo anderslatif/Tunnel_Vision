@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 
 public class OpenGLView extends GLSurfaceView {
 
-    private GameRenderer mRenderer;
+    private GameRenderer renderer;
 
     private float mDownX = 0.0f;
     private float mDownY = 0.0f;
@@ -15,8 +15,8 @@ public class OpenGLView extends GLSurfaceView {
     public OpenGLView(Context context) {
         super(context);
 
-        mRenderer = new GameRenderer();
-        this.setRenderer(mRenderer);
+        renderer = new GameRenderer();
+        this.setRenderer(renderer);
     }
 
     @Override
@@ -32,8 +32,8 @@ public class OpenGLView extends GLSurfaceView {
             case MotionEvent.ACTION_MOVE:
                 float mX = event.getX();
                 float mY = event.getY();
-                mRenderer.mLightX += (mX-mDownX)/10;
-                mRenderer.mLightY -= (mY-mDownY)/10;
+                renderer.mLightX += (mX-mDownX)/10;
+                renderer.mLightY -= (mY-mDownY)/10;
                 mDownX = mX;
                 mDownY = mY;
                 return true;

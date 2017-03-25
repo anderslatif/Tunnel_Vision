@@ -11,6 +11,7 @@ import javax.microedition.khronos.opengles.GL10;
 import android.opengl.GLU;
 import android.opengl.GLSurfaceView.Renderer;
 
+import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Ball;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Sphere;
 
 public class GameRenderer implements Renderer {
@@ -25,11 +26,21 @@ public class GameRenderer implements Renderer {
     private final float[] mat_specular = { 0.2f * 0.4f, 0.2f * 0.6f, 0.2f * 0.8f, 1.0f };
     private FloatBuffer mat_specular_buf;
 
-    private Sphere sphere = new Sphere();
+    private Sphere sphere;
+    private Ball ball;
+    BallPhysicsCalculations ballPhysicsCalculations;
+    float[] ballCalculations;
 
     public volatile float mLightX = 10f;
     public volatile float mLightY = 10f;
     public volatile float mLightZ = 10f;
+
+    public GameRenderer() {
+
+        sphere = new Sphere();
+        ball = new Ball(0.0f, 0.0f, -3.0f);
+        ballPhysicsCalculations = new BallPhysicsCalculations(ball);
+    }
 
 
     @Override
@@ -49,7 +60,10 @@ public class GameRenderer implements Renderer {
         gl.glDepthFunc(GL10.GL_LEQUAL);
 
         initBuffers();
+
+
     }
+
 
     @Override
     public void onDrawFrame(GL10 gl) {
@@ -80,7 +94,8 @@ public class GameRenderer implements Renderer {
         gl.glLightfv(GL10.GL_LIGHT0, GL10.GL_POSITION, mat_posiBuf);
 
 
-        gl.glTranslatef(0.0f, 0.0f, -3.0f);
+        ballCalculations = ballPhysicsCalculations.calculateNextMove();
+        gl.glTranslatef(ballCalculations[0], ballCalculations[2], ballCalculations[4]);
         sphere.draw(gl);
 
     }
