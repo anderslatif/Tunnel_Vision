@@ -4,11 +4,11 @@ package dk.kea.class2017.anders.tunnelvision;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import dk.kea.class2017.anders.tunnelvision.Graphics.GameGLSurfaceView;
+import dk.kea.class2017.anders.tunnelvision.GameWorld.OpenGLView;
 
 public class GameActivity extends AppCompatActivity {
 
-    private GameGLSurfaceView surfaceView;
+    private OpenGLView gameGLSurfaceView;
 
 
     @Override
@@ -17,23 +17,24 @@ public class GameActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_game); // todo when I am sure that I don't need this then delete the xml file too
 
 
-        surfaceView = new GameGLSurfaceView(this);
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! " + surfaceView);
-        setContentView(surfaceView);
+        gameGLSurfaceView = new OpenGLView(this);
+        setContentView(gameGLSurfaceView);
 
 
     }
 
-
-/*    public void onPause() {
+    // the onPause and onResume calls methods in the GLSurfaceView
+    @Override
+    public void onPause() {
         super.onPause();
-        surfaceView.onPause();
+        gameGLSurfaceView.onPause();
     }
 
+    @Override
     public void onResume() {
         super.onResume();
-        surfaceView.onResume();
-    }*/
+        gameGLSurfaceView.onResume();
+    }
 
 
 
