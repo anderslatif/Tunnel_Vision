@@ -8,13 +8,11 @@ import java.nio.FloatBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import android.opengl.GLES20;
 import android.opengl.GLU;
 import android.opengl.GLSurfaceView.Renderer;
 
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Ball;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes.Sphere;
-import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes.Triangle;
 import dk.kea.class2017.anders.tunnelvision.NewTest.TriangleTest;
 
 public class GameRenderer implements Renderer {

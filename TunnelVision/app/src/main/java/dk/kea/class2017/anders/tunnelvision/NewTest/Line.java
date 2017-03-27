@@ -1,4 +1,4 @@
-package dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes;
+package dk.kea.class2017.anders.tunnelvision.NewTest;
 
 
 import android.opengl.GLES20;
@@ -35,6 +35,9 @@ public class Line {
 
     public void draw(GL10 gl) {
 
+
+
+        gl.glDrawArrays(GL10.GL_LINES, 0, 2);
 
     }
 
