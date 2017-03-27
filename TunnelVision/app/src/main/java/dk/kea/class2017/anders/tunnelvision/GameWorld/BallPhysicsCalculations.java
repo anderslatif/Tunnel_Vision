@@ -27,9 +27,6 @@ public class BallPhysicsCalculations {
             ball.z += ball.z * ball.vz;
         }
 
-        System.out.println("################" + ball.z);
-        System.out.println("@@@@@@@@@ "+ ball.vz);
-
         ballCalculations[0] = ball.x;
         ballCalculations[1] = ball.vx;
         ballCalculations[2] = ball.y;

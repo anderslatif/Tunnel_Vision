@@ -1,4 +1,4 @@
-package dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements;
+package dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes;
 
 
 import java.nio.ByteBuffer;
@@ -75,5 +75,7 @@ public class Sphere {
         gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
         gl.glDisableClientState(GL10.GL_NORMAL_ARRAY);
     }
+
+
 
 }

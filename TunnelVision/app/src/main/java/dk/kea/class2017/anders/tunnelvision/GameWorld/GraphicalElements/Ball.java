@@ -20,9 +20,9 @@ public class Ball {
         this.y = y;
         this.z = z;
 
-        vx = -0.1f;
-        vy = -0.1f;
-        vz = -0.1f;
+        vx = 0.1f;
+        vy = 0.1f;
+        vz = 0.1f;
     }
 
 
