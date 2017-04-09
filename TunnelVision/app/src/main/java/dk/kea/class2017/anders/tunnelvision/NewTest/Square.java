@@ -8,8 +8,6 @@ import java.nio.ShortBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import dk.kea.class2017.anders.tunnelvision.GameWorld.GameRenderer;
-
 public class Square {
 
     private FloatBuffer vertexBuffer;

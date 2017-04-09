@@ -5,13 +5,9 @@ import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
 
-import dk.kea.class2017.anders.tunnelvision.GameWorld.GameRenderer;
-import dk.kea.class2017.anders.tunnelvision.NewTest.SimpleRenderer;
-
 public class OpenGLView extends GLSurfaceView {
 
-//    private GameRenderer renderer;
-    private SimpleRenderer renderer;
+    private GameRenderer renderer;
 
     private float[] accelerometer;
 
@@ -22,8 +18,7 @@ public class OpenGLView extends GLSurfaceView {
         super(context);
         this.accelerometer = accelerometer;
 
-        //renderer = new GameRenderer(); // todo uncomment this
-        renderer = new SimpleRenderer();
+        renderer = new GameRenderer();
         this.setRenderer(renderer);
     }
 

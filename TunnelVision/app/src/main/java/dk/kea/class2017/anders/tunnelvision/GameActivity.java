@@ -6,18 +6,26 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.opengl.EGLConfig;
+import android.opengl.GLSurfaceView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class GameActivity extends AppCompatActivity implements SensorEventListener {
+import javax.microedition.khronos.opengles.GL10;
+
+import dk.kea.class2017.anders.tunnelvision.GameEngine.GLUtil.GLGraphics;
+
+public class GameActivity extends AppCompatActivity implements SensorEventListener, GLSurfaceView.Renderer {
 
     private OpenGLView gameGLSurfaceView;
     private float[] accelerometer = new float[3];  // contains values x, y, z
+    private GLGraphics glGraphics;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_game); // todo when I am sure that I don't need this then delete the xml file too
 
         SensorManager manager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         if (manager.getSensorList(Sensor.TYPE_ACCELEROMETER).size() != 0) {
@@ -28,8 +36,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         gameGLSurfaceView = new OpenGLView(this, accelerometer);
         setContentView(gameGLSurfaceView);
 
-
+        glGraphics = new GLGraphics(gameGLSurfaceView);
     }
+
 
     // the onPause and onResume calls methods in the GLSurfaceView
     @Override
@@ -68,4 +77,30 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
+
+
+
+
+    // the three methods below are implementations from android.Renderer
+    @Override
+    public void onSurfaceCreated(GL10 gl, javax.microedition.khronos.egl.EGLConfig config) {
+        glGraphics = new GLGraphics(gameGLSurfaceView);
+    }
+
+    @Override
+    public void onSurfaceChanged(GL10 gl, int width, int height) {
+
+    }
+
+    @Override
+    public void onDrawFrame(GL10 gl) {
+
+    }
+
+
+    public GLGraphics getGLGraphics() {
+        return glGraphics;
+    }
+
+
 }

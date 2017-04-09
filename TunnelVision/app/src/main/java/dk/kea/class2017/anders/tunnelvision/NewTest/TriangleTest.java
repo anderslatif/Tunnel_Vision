@@ -7,9 +7,11 @@ import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import dk.kea.class2017.anders.tunnelvision.GameEngine.GLUtil.GLGraphics;
+
 public class TriangleTest {
 
-
+    GLGraphics glGraphics;
     FloatBuffer vertices;
 
     static float triangleCoords[] =
@@ -18,6 +20,8 @@ public class TriangleTest {
                                                 160.0f, 479.0f, -1.0f};
 
     public TriangleTest() {
+
+        //glGraphics = ((GLGame)game).getGLGraphics();
 
         ByteBuffer byteBuffer = ByteBuffer.allocateDirect(3 * 3 * 4);
         byteBuffer.order(ByteOrder.nativeOrder());
