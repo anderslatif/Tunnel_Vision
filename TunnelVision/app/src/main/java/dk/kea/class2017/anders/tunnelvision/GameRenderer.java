@@ -8,11 +8,8 @@ import java.nio.FloatBuffer;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import android.opengl.GLU;
 import android.opengl.GLSurfaceView.Renderer;
 
-import dk.kea.class2017.anders.tunnelvision.GameEngine.GLUtil.GLGraphics;
-import dk.kea.class2017.anders.tunnelvision.GameEngine.GLUtil.Vertices;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.BallPhysicsCalculations;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Ball;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes.Sphere;
@@ -41,22 +38,22 @@ public class GameRenderer implements Renderer {
     public volatile float mLightY = 10f;
     public volatile float mLightZ = 10f;
 
-    GLGraphics glGraphics;
 
-    TriangleTest triangle;
+    private TriangleTest triangle;
 
     public GameRenderer() {
 
         sphere = new Sphere();
         ball = new Ball(0.0f, 0.0f, -3.0f);
         ballPhysicsCalculations = new BallPhysicsCalculations(ball);
-        triangle = new TriangleTest();
     }
 
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig arg1) {
-        // On the perspective correction
+        triangle = new TriangleTest();
+
+/*        // On the perspective correction
         gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_FASTEST);
         // Background: Black
         gl.glClearColor(0, 0.0f, 0.0f, 0.0f);
@@ -70,18 +67,17 @@ public class GameRenderer implements Renderer {
         // Type the depth test
         gl.glDepthFunc(GL10.GL_LEQUAL);
 
-        initBuffers();
-
+        initBuffers();*/
 
     }
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
 
-/*        // Set the output screen size
+        // Set the output screen size
         gl.glViewport(0, 0, width, height);
 
-        // Projection matrix
+/*        // Projection matrix
         gl.glMatrixMode(GL10.GL_PROJECTION);
         // Reset the projection matrix
         gl.glLoadIdentity();
@@ -133,8 +129,8 @@ public class GameRenderer implements Renderer {
 
 
 
-/*        gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        triangle.draw(gl);*/
+        gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+        triangle.draw(gl);
 
     }
 

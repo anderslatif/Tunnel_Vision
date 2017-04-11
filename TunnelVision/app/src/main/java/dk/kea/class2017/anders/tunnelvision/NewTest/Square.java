@@ -8,72 +8,61 @@ import java.nio.ShortBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import dk.kea.class2017.anders.tunnelvision.GameEngine.GLUtil.Vertices;
+
 public class Square {
 
-    private FloatBuffer vertexBuffer;
-    private ShortBuffer drawListBuffer;
-
-    private final String vertexShaderCode =
-            "attribute vec4 vPosition;" +
-                    "void main() {" +
-                    "  gl_Position = vPosition;" +
-                    "}";
-
-    private final String fragmentShaderCode =
-            "precision mediump float;" +
-                    "uniform vec4 vColor;" +
-                    "void main() {" +
-                    "  gl_FragColor = vColor;" +
-                    "}";
+    Vertices squareModel;
 
 
-    // number of coordinates per vertex in this array
-    static final int COORDS_PER_VERTEX = 3;
-    static float squareCoords[] = {
-            -0.5f,  0.5f, 0.0f,   // top left
-            -0.5f, -0.5f, 0.0f,   // bottom left
-            0.5f, -0.5f, 0.0f,   // bottom right
-            0.5f,  0.5f, 0.0f }; // top right
 
-    private short drawOrder[] = { 0, 1, 2, 0, 2, 3 }; // order to draw vertices
+    final int VERTEX_SIZE = (2 + 2) * 4;
+    FloatBuffer vertices;
+    ShortBuffer indices;
+
 
     public Square() {
-        // initialize vertex byte buffer for shape coordinates
-        ByteBuffer bb = ByteBuffer.allocateDirect(
-                // (# of coordinate values * 4 bytes per float)
-                squareCoords.length * 4);
-        bb.order(ByteOrder.nativeOrder());
-        vertexBuffer = bb.asFloatBuffer();
-        vertexBuffer.put(squareCoords);
-        vertexBuffer.position(0);
 
-        // initialize byte buffer for the draw list
-        ByteBuffer dlb = ByteBuffer.allocateDirect(
-                // (# of coordinate values * 2 bytes per short)
-                drawOrder.length * 2);
-        dlb.order(ByteOrder.nativeOrder());
-        drawListBuffer = dlb.asShortBuffer();
-        drawListBuffer.put(drawOrder);
-        drawListBuffer.position(0);
+        ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * VERTEX_SIZE);
+        byteBuffer.order(ByteOrder.nativeOrder());
+        vertices = byteBuffer.asFloatBuffer();
+        vertices.put(new float[] {  100.0f, 100.0f, 0.0f, 1.0f,
+                228.0f, 100.0f, 1.0f, 1.0f,
+                228.0f, 228.0f, 1.0f, 0.0f,
+                100.0f, 228.0f, 0.0f, 0.0f });
+        vertices.flip();
 
 
+        byteBuffer = ByteBuffer.allocateDirect(6 * 2);
+        byteBuffer.order(ByteOrder.nativeOrder());
+        indices = byteBuffer.asShortBuffer();
+        indices.put(new short[] { 0, 1, 2,
+                2, 3, 0 });
+        indices.flip();
+
+       /* squareModel = new Vertices(4, 12, false, true);
+        squareModel.setVertices(new float[] { -16, -16, 0, 1,
+                16, -16, 1, 1,
+                16,  16, 1, 0,
+                -16, 16, 0, 0, }, 0, 16);
+        squareModel.setIndices(new short[] {0, 1, 2, 2, 3, 0}, 0, 6);*/
     }
 
-
-
-
     public void draw(GL10 gl) {
-        //gl.glViewport(0, 0, gl.getWidth(), gl.getHeight());
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
         gl.glMatrixMode(GL10.GL_PROJECTION);
         gl.glLoadIdentity();
         gl.glOrthof(0, 320, 0, 480, 1, -1);
 
-        gl.glColor4f(1, 0, 0, 1);
+        gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
         gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
-        gl.glVertexPointer( 2, GL10.GL_FLOAT, 0, vertexBuffer);
-        gl.glDrawArrays(GL10.GL_TRIANGLES, 0, 3);
 
+        vertices.position(0);
+        gl.glVertexPointer(2, GL10.GL_FLOAT, VERTEX_SIZE, vertices);
+        vertices.position(2);
+        gl.glTexCoordPointer(2, GL10.GL_FLOAT, VERTEX_SIZE, vertices);
+
+        gl.glDrawElements(GL10.GL_TRIANGLES, 6, GL10.GL_UNSIGNED_SHORT, indices);
     }
 
 }

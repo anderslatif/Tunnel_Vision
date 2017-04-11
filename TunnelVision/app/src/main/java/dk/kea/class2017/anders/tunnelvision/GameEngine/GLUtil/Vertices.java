@@ -9,15 +9,13 @@ import javax.microedition.khronos.opengles.GL10;
 
 public class Vertices {
 
-    final GLGraphics glGraphics;
     final boolean hasColor;
     final boolean hasTexCoords;
     final int vertexSize;
     final FloatBuffer vertices;
     final ShortBuffer indices;
 
-    public Vertices(GLGraphics glGraphics, int maxVertices, int maxIndices, boolean hasColor, boolean hasTexCoords) {
-        this.glGraphics = glGraphics;
+    public Vertices(int maxVertices, int maxIndices, boolean hasColor, boolean hasTexCoords) {
         this.hasColor = hasColor;
         this.hasTexCoords = hasTexCoords;
         this.vertexSize = (2 + (hasColor?4:0) + (hasTexCoords?2:0)) * 4;
@@ -47,8 +45,7 @@ public class Vertices {
         this.indices.flip();
     }
 
-    public void draw(int primitiveType, int offset, int numVertices) {
-        GL10 gl = glGraphics.getGL();
+    public void draw(GL10 gl, int primitiveType, int offset, int numVertices) {
 
         gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
         vertices.position(0);
