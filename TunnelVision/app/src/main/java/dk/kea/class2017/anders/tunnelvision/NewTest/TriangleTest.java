@@ -18,8 +18,6 @@ public class TriangleTest {
 
     public TriangleTest() {
 
-        //glGraphics = ((GLGame)game).getGLGraphics();
-
         ByteBuffer byteBuffer = ByteBuffer.allocateDirect(3 * 3 * 4);
         byteBuffer.order(ByteOrder.nativeOrder());
         vertices = byteBuffer.asFloatBuffer();

@@ -21,36 +21,37 @@ public class Square {
     ShortBuffer indices;
 
 
+    float[] verticeCoords = new float[] {  100.0f, 100.0f, 0.0f, 1.0f,
+            228.0f, 100.0f, 1.0f, 1.0f,
+            228.0f, 228.0f, 1.0f, 0.0f,
+            100.0f, 228.0f, 0.0f, 0.0f };
+
+    short[] indiceOrdering = { 0, 1, 2,
+            2, 3, 0 };
+
     public Square() {
 
-        ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * VERTEX_SIZE);
+/*        ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * VERTEX_SIZE);
         byteBuffer.order(ByteOrder.nativeOrder());
         vertices = byteBuffer.asFloatBuffer();
-        vertices.put(new float[] {  100.0f, 100.0f, 0.0f, 1.0f,
-                228.0f, 100.0f, 1.0f, 1.0f,
-                228.0f, 228.0f, 1.0f, 0.0f,
-                100.0f, 228.0f, 0.0f, 0.0f });
+        vertices.put(verticeCoords);
         vertices.flip();
 
 
         byteBuffer = ByteBuffer.allocateDirect(6 * 2);
         byteBuffer.order(ByteOrder.nativeOrder());
         indices = byteBuffer.asShortBuffer();
-        indices.put(new short[] { 0, 1, 2,
-                2, 3, 0 });
-        indices.flip();
+        indices.put(indiceOrdering);
+        indices.flip();*/
 
-       /* squareModel = new Vertices(4, 12, false, true);
-        squareModel.setVertices(new float[] { -16, -16, 0, 1,
-                16, -16, 1, 1,
-                16,  16, 1, 0,
-                -16, 16, 0, 0, }, 0, 16);
-        squareModel.setIndices(new short[] {0, 1, 2, 2, 3, 0}, 0, 6);*/
+        squareModel = new Vertices(4, 12, false, true);
+        squareModel.setVertices(verticeCoords, 0, 16);
+        squareModel.setIndices(indiceOrdering, 0, 6);
     }
 
     public void draw(GL10 gl) {
-        gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        gl.glMatrixMode(GL10.GL_PROJECTION);
+/*         gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+       gl.glMatrixMode(GL10.GL_PROJECTION);
         gl.glLoadIdentity();
         gl.glOrthof(0, 320, 0, 480, 1, -1);
 
@@ -62,7 +63,9 @@ public class Square {
         vertices.position(2);
         gl.glTexCoordPointer(2, GL10.GL_FLOAT, VERTEX_SIZE, vertices);
 
-        gl.glDrawElements(GL10.GL_TRIANGLES, 6, GL10.GL_UNSIGNED_SHORT, indices);
+        gl.glDrawElements(GL10.GL_TRIANGLES, 6, GL10.GL_UNSIGNED_SHORT, indices);*/
+
+        squareModel.draw(gl, GL10.GL_TRIANGLES, 0, 6);
     }
 
 }

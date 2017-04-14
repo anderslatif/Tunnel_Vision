@@ -7,6 +7,10 @@ import java.nio.ShortBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
+/**
+ * Courtesy Mario Zechner, Beginning Android Games
+ */
+
 public class Vertices {
 
     final boolean hasColor;
