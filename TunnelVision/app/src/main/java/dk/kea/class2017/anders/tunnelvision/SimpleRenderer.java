@@ -10,21 +10,20 @@ import javax.microedition.khronos.opengles.GL10;
 
 import dk.kea.class2017.anders.tunnelvision.NewTest.ColoredTriangleTest;
 import dk.kea.class2017.anders.tunnelvision.NewTest.Square;
-import dk.kea.class2017.anders.tunnelvision.NewTest.TriangleTest;
-import dk.kea.class2017.anders.tunnelvision.ThreeD.Vertices3Screen;
+import dk.kea.class2017.anders.tunnelvision.ThreeD.Square3d;
 
 public class SimpleRenderer implements Renderer {
 
     Random rand = new Random();
     ColoredTriangleTest triangle;
     Square square;
-    Vertices3Screen drawable;
+    Square3d drawable;
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         triangle = new ColoredTriangleTest();
         square = new Square();
-        drawable = new Vertices3Screen(gl);
+        drawable = new Square3d(gl);
     }
 
     @Override
@@ -32,12 +31,14 @@ public class SimpleRenderer implements Renderer {
         gl.glViewport(0, 0, width, height);
     }
 
+
+
     @Override
     public void onDrawFrame(GL10 gl) {
 
-        //gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        //triangle.draw(gl);
-        //square.draw(gl);
+
+
+
         drawable.present(gl);
 
     }

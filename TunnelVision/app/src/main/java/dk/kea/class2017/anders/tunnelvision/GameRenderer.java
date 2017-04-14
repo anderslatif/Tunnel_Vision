@@ -9,11 +9,12 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import android.opengl.GLSurfaceView.Renderer;
+import android.opengl.GLU;
 
 import dk.kea.class2017.anders.tunnelvision.GameWorld.BallPhysicsCalculations;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Ball;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes.Sphere;
-import dk.kea.class2017.anders.tunnelvision.NewTest.TriangleTest;
+import dk.kea.class2017.anders.tunnelvision.ThreeD.Square3d;
 
 public class GameRenderer implements Renderer {
 
@@ -38,8 +39,8 @@ public class GameRenderer implements Renderer {
     public volatile float mLightY = 10f;
     public volatile float mLightZ = 10f;
 
+    Square3d threeDTriangles;
 
-    private TriangleTest triangle;
 
     public GameRenderer() {
 
@@ -51,9 +52,10 @@ public class GameRenderer implements Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig arg1) {
-        triangle = new TriangleTest();
 
-/*        // On the perspective correction
+        threeDTriangles = new Square3d(gl);
+
+        // On the perspective correction
         gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_FASTEST);
         // Background: Black
         gl.glClearColor(0, 0.0f, 0.0f, 0.0f);
@@ -67,7 +69,7 @@ public class GameRenderer implements Renderer {
         // Type the depth test
         gl.glDepthFunc(GL10.GL_LEQUAL);
 
-        initBuffers();*/
+        initBuffers();
 
     }
 
@@ -77,7 +79,7 @@ public class GameRenderer implements Renderer {
         // Set the output screen size
         gl.glViewport(0, 0, width, height);
 
-/*        // Projection matrix
+        // Projection matrix
         gl.glMatrixMode(GL10.GL_PROJECTION);
         // Reset the projection matrix
         gl.glLoadIdentity();
@@ -89,7 +91,7 @@ public class GameRenderer implements Renderer {
         // Select the model view matrix
         gl.glMatrixMode(GL10.GL_MODELVIEW);
         // Reset the modelview matrix
-        gl.glLoadIdentity();*/
+        gl.glLoadIdentity();
 
     }
 
@@ -98,7 +100,7 @@ public class GameRenderer implements Renderer {
         float deltaTime = (System.nanoTime()-startTime) / 1000000000.0f;
         startTime = System.nanoTime();
 
-/*        // To clear the screen and the depth buffer
+        // To clear the screen and the depth buffer
         gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
         // Reset the modelview matrix
         gl.glLoadIdentity();
@@ -125,12 +127,10 @@ public class GameRenderer implements Renderer {
 
         ballCalculations = ballPhysicsCalculations.calculateNextMove();
         gl.glTranslatef(ballCalculations[0], ballCalculations[2], ballCalculations[4]);
-        sphere.draw(gl);*/
+        sphere.draw(gl);
 
 
-
-        gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        triangle.draw(gl);
+        threeDTriangles.present(gl);
 
     }
 
