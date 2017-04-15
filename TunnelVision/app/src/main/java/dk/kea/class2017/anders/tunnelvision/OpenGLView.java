@@ -7,8 +7,8 @@ import android.view.MotionEvent;
 
 public class OpenGLView extends GLSurfaceView {
 
-//    private GameRenderer renderer;
-    private SimpleRenderer renderer;
+    private GameRenderer renderer;
+//    private SimpleRenderer renderer;
 
     private float[] accelerometer;
 
@@ -19,8 +19,8 @@ public class OpenGLView extends GLSurfaceView {
         super(context);
         this.accelerometer = accelerometer;
 
-//        renderer = new GameRenderer();
-        renderer = new SimpleRenderer();
+        renderer = new GameRenderer();
+        //renderer = new SimpleRenderer(accelerometer);
         this.setRenderer(renderer);
     }
 

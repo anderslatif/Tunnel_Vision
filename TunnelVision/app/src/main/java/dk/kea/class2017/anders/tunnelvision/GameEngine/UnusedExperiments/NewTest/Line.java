@@ -1,10 +1,6 @@
-package dk.kea.class2017.anders.tunnelvision.NewTest;
+package dk.kea.class2017.anders.tunnelvision.GameEngine.UnusedExperiments.NewTest;
 
 
-import android.opengl.GLES20;
-
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;

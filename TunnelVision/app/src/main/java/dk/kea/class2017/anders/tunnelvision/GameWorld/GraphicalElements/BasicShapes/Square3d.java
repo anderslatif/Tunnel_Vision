@@ -1,4 +1,4 @@
-package dk.kea.class2017.anders.tunnelvision.ThreeD;
+package dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes;
 
 
 import javax.microedition.khronos.opengles.GL10;
@@ -10,13 +10,13 @@ public class Square3d {
     Vertices3 vertices;
 
     private float[] verticeCoords = new float[] {
-            0.0f, 1.0f, 0, 1, 1, 1, 0.1f,
-            -0.0f, 0.0f, 0, 1, 1, 1, 0.1f,
-            1.0f,  0.0f, 0, 1, 1, 1, 0.1f,
+            -0.5f, 0.25f, 0, 1, 1, 1, 0.1f,
+            -0.5f, -0.25f, 0, 1, 1, 1, 0.1f,
+            0.5f,  -0.25f, 0, 1, 1, 1, 0.1f,
 
-            0.0f,  1.0f, 0, 1, 1, 1, 0.1f,
-            1.0f,  0.0f, 0, 1, 1, 1, 0.1f,
-            1.0f,  1.0f, 0, 1, 1, 1, 0.1f,
+            -0.5f,  0.25f, 0, 1, 1, 1, 0.1f,
+            0.5f,  -0.25f, 0, 1, 1, 1, 0.1f,
+            0.5f,  0.25f, 0, 1, 1, 1, 0.1f,
     };
 
         public Square3d(GL10 gl) {
@@ -27,7 +27,7 @@ public class Square3d {
         }
 
 
-        public void present(GL10 gl) {
+        public void present(GL10 gl, float[] position) {
 
             gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
             gl.glMatrixMode(GL10.GL_PROJECTION);
@@ -35,6 +35,7 @@ public class Square3d {
             gl.glOrthof(-1, 1, -1, 1, 10, -10);
             gl.glMatrixMode(GL10.GL_MODELVIEW);
             gl.glLoadIdentity();
+            gl.glTranslatef(position[0], position[1], 0);
             vertices.bind(gl);
             vertices.draw(gl, GL10.GL_TRIANGLES, 0, 6);
             vertices.unbind(gl);

@@ -14,7 +14,7 @@ import android.opengl.GLU;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.BallPhysicsCalculations;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Ball;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes.Sphere;
-import dk.kea.class2017.anders.tunnelvision.ThreeD.Square3d;
+import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes.Square3d;
 
 public class GameRenderer implements Renderer {
 
@@ -39,7 +39,7 @@ public class GameRenderer implements Renderer {
     public volatile float mLightY = 10f;
     public volatile float mLightZ = 10f;
 
-    Square3d threeDTriangles;
+    Square3d paddle;
 
 
     public GameRenderer() {
@@ -53,7 +53,7 @@ public class GameRenderer implements Renderer {
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig arg1) {
 
-        threeDTriangles = new Square3d(gl);
+        paddle = new Square3d(gl);
 
         // On the perspective correction
         gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_FASTEST);
@@ -130,7 +130,6 @@ public class GameRenderer implements Renderer {
         sphere.draw(gl);
 
 
-        threeDTriangles.present(gl);
 
     }
 
