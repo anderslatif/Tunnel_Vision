@@ -37,6 +37,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         }
 
         gameGLSurfaceView = new OpenGLView(this, accelerometer);
+//        gameGLSurfaceView.setBackgroundResource(R.drawable.tunnel);
+//        gameGLSurfaceView.setZOrderOnTop(false);
         setContentView(gameGLSurfaceView);
 
     }

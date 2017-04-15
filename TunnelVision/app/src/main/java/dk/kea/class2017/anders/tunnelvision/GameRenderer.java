@@ -19,6 +19,7 @@ import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicSha
 public class GameRenderer implements Renderer {
 
     private long startTime = System.nanoTime();
+    private float[] accelerometer;
 
     // Ambient light
     private final float[] mat_ambient = { 0.2f, 0.3f, 0.4f, 1.0f };
@@ -42,8 +43,9 @@ public class GameRenderer implements Renderer {
     Square3d paddle;
 
 
-    public GameRenderer() {
+    public GameRenderer(float[] accelerometer) {
 
+        this.accelerometer = accelerometer;
         sphere = new Sphere();
         ball = new Ball(0.0f, 0.0f, -3.0f);
         ballPhysicsCalculations = new BallPhysicsCalculations(ball);
@@ -125,12 +127,11 @@ public class GameRenderer implements Renderer {
         gl.glLightfv(GL10.GL_LIGHT0, GL10.GL_POSITION, mat_posiBuf);
 
 
-        ballCalculations = ballPhysicsCalculations.calculateNextMove();
+        ballCalculations = ballPhysicsCalculations.calculateNextMove(deltaTime);
         gl.glTranslatef(ballCalculations[0], ballCalculations[2], ballCalculations[4]);
         sphere.draw(gl);
 
-
-
+        //paddle.present(gl, accelerometer);
     }
 
 

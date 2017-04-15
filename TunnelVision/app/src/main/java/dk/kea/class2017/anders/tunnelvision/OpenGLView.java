@@ -19,7 +19,7 @@ public class OpenGLView extends GLSurfaceView {
         super(context);
         this.accelerometer = accelerometer;
 
-        renderer = new GameRenderer();
+        renderer = new GameRenderer(accelerometer);
         //renderer = new SimpleRenderer(accelerometer);
         this.setRenderer(renderer);
     }

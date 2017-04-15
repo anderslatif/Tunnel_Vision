@@ -14,17 +14,22 @@ public class BallPhysicsCalculations {
     }
 
 
-    public float[] calculateNextMove() {
+    public float[] calculateNextMove(float deltatime) {
+
+        System.out.println("###########################" + ball.z);
+
+        float speedConstant = 8;
 
         if (ball.z <= Tunnel.LENGTH) {
             ball.z = Tunnel.LENGTH; // reposition the ball so it doesn't get stuck outside of the boundaries
             ball.vz = -ball.vz; // the ball comes back forward with a positive velocity value
-            ball.z += ball.z * ball.vz;
-        } else if (ball.z > -2f) {  // the ball is too close if bigger than -2f
+            ball.z += ball.z * ball.vz * deltatime*speedConstant;
+        } else if (ball.z > -3f) {  // the ball is too close if bigger than -2f
             ball.vz = -ball.vz; // reverse the velocity to a negative number
-            ball.z += ball.z * ball.vz;
+            ball.z = -3f; // resetting it if out of bounds
+            ball.z += ball.z * ball.vz * deltatime*speedConstant;
         } else  {
-            ball.z += ball.z * ball.vz;
+            ball.z += ball.z * ball.vz * deltatime*speedConstant;
         }
 
         ballCalculations[0] = ball.x;
