@@ -38,7 +38,10 @@ public class OpenGLView extends GLSurfaceView {
             case MotionEvent.ACTION_MOVE:
                 float mX = event.getX();
                 float mY = event.getY();
+                System.out.println("##################mx" + mX);
+                System.out.println("##################my" + mY);
                /* renderer.mLightX += (mX-mDownX)/10;
+
                 renderer.mLightY -= (mY-mDownY)/10;*/
                 mDownX = mX;
                 mDownY = mY;

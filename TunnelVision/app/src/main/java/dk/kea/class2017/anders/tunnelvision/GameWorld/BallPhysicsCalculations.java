@@ -16,7 +16,6 @@ public class BallPhysicsCalculations {
 
     public float[] calculateNextMove(float deltatime) {
 
-        System.out.println("###########################" + ball.z);
 
         float speedConstant = 8;
 

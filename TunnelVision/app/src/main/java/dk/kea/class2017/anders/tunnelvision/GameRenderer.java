@@ -16,6 +16,8 @@ import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Ball;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes.Sphere;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes.Square3d;
 
+import static javax.microedition.khronos.opengles.GL10.GL_NEVER;
+
 public class GameRenderer implements Renderer {
 
     private long startTime = System.nanoTime();

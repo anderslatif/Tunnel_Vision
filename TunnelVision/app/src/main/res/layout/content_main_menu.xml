@@ -17,28 +17,36 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <Button
             android:text="Play"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_menu_play"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@drawable/gradient"
+            style="@style/buttonStyle" />
 
         <Button
             android:text="Settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_menu_settings"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@drawable/gradient"
+            style="@style/buttonStyle" />
 
         <Button
             android:text="Quit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_menu_quit"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@drawable/gradient"
+            style="@style/buttonStyle" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -5,9 +5,11 @@ public class PaddleCalculations {
 
     public static float[] nextPaddlePosition(float[] accelerometer, float deltatime) {
 
+/*
         System.out.println("****************************0      " + accelerometer[0]);
         System.out.println("****************************1      " + accelerometer[1]);
         System.out.println("****************************2      " + accelerometer[1]);
+*/
 
         float accelerometerConstant = 100;
 
