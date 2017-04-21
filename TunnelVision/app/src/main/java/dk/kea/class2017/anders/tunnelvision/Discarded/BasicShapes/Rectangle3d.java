@@ -1,11 +1,11 @@
-package dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes;
+package dk.kea.class2017.anders.tunnelvision.Discarded.BasicShapes;
 
 
 import javax.microedition.khronos.opengles.GL10;
 
-import dk.kea.class2017.anders.tunnelvision.GameEngine.GLUtil.Vertices3;
+import dk.kea.class2017.anders.tunnelvision.Discarded.GLUtil.Vertices3;
 
-public class Square3d {
+public class Rectangle3d {
 
     Vertices3 vertices;
 
@@ -19,7 +19,7 @@ public class Square3d {
             0.5f,  0.25f, 0, 1, 1, 1, 0.1f,
     };
 
-        public Square3d(GL10 gl) {
+        public Rectangle3d(GL10 gl) {
 
             vertices = new Vertices3(gl, 6, 0, true, false);
 

@@ -1,8 +1,8 @@
-package dk.kea.class2017.anders.tunnelvision.GameWorld;
+package dk.kea.class2017.anders.tunnelvision.Discarded.Calculations;
 
 
-import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Ball;
-import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Tunnel;
+import dk.kea.class2017.anders.tunnelvision.GameWorld.Calculations.Ball;
+import dk.kea.class2017.anders.tunnelvision.Discarded.BasicShapes.Tunnel;
 
 public class BallPhysicsCalculations {
 

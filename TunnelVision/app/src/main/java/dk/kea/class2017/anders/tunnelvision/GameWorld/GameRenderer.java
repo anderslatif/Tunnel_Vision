@@ -1,4 +1,4 @@
-package dk.kea.class2017.anders.tunnelvision;
+package dk.kea.class2017.anders.tunnelvision.GameWorld;
 
 
 import java.nio.ByteBuffer;
@@ -11,12 +11,10 @@ import javax.microedition.khronos.opengles.GL10;
 import android.opengl.GLSurfaceView.Renderer;
 import android.opengl.GLU;
 
-import dk.kea.class2017.anders.tunnelvision.GameWorld.BallPhysicsCalculations;
-import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Ball;
-import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes.Sphere;
-import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes.Square3d;
-
-import static javax.microedition.khronos.opengles.GL10.GL_NEVER;
+import dk.kea.class2017.anders.tunnelvision.Discarded.Calculations.BallPhysicsCalculations;
+import dk.kea.class2017.anders.tunnelvision.GameWorld.Calculations.Ball;
+import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Sphere;
+import dk.kea.class2017.anders.tunnelvision.Discarded.BasicShapes.Rectangle3d;
 
 public class GameRenderer implements Renderer {
 
@@ -42,14 +40,13 @@ public class GameRenderer implements Renderer {
     public volatile float mLightY = 10f;
     public volatile float mLightZ = 10f;
 
-    Square3d paddle;
+    Rectangle3d paddle;
 
 
     public GameRenderer(float[] accelerometer) {
 
         this.accelerometer = accelerometer;
         sphere = new Sphere();
-        ball = new Ball(0.0f, 0.0f, -3.0f);
         ballPhysicsCalculations = new BallPhysicsCalculations(ball);
     }
 
@@ -57,7 +54,7 @@ public class GameRenderer implements Renderer {
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig arg1) {
 
-        paddle = new Square3d(gl);
+        paddle = new Rectangle3d(gl);
 
         // On the perspective correction
         gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_FASTEST);
@@ -74,6 +71,9 @@ public class GameRenderer implements Renderer {
         gl.glDepthFunc(GL10.GL_LEQUAL);
 
         initBuffers();
+
+        //todo Anders find a more optimal way
+        World.nextLevel();
 
     }
 
@@ -133,7 +133,10 @@ public class GameRenderer implements Renderer {
         gl.glTranslatef(ballCalculations[0], ballCalculations[2], ballCalculations[4]);
         sphere.draw(gl);
 
-        //paddle.present(gl, accelerometer);
+        // if ball out of bounds then render the restart button
+
+
+
     }
 
 

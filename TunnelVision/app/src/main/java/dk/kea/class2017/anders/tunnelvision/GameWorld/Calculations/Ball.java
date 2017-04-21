@@ -1,8 +1,8 @@
-package dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements;
+package dk.kea.class2017.anders.tunnelvision.GameWorld.Calculations;
 
 
 /**
- *  A ball contains values about the position and velocity of a sphere for the
+ *  This class contains position and velocity values for the sphere
  */
 public class Ball {
 

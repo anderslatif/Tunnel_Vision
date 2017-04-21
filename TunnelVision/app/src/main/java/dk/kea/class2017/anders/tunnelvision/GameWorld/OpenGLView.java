@@ -1,9 +1,11 @@
-package dk.kea.class2017.anders.tunnelvision;
+package dk.kea.class2017.anders.tunnelvision.GameWorld;
 
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
+
+import dk.kea.class2017.anders.tunnelvision.GameWorld.GameRenderer;
 
 public class OpenGLView extends GLSurfaceView {
 

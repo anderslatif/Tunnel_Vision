@@ -1,11 +1,11 @@
-package dk.kea.class2017.anders.tunnelvision.GameEngine.UnusedExperiments.NewTest;
+package dk.kea.class2017.anders.tunnelvision.Discarded.NewTest;
 
 
 import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import dk.kea.class2017.anders.tunnelvision.GameEngine.GLUtil.Vertices;
+import dk.kea.class2017.anders.tunnelvision.Discarded.GLUtil.Vertices;
 
 public class ColoredTriangleTest {
 

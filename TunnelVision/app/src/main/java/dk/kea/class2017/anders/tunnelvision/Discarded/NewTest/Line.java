@@ -1,4 +1,4 @@
-package dk.kea.class2017.anders.tunnelvision.GameEngine.UnusedExperiments.NewTest;
+package dk.kea.class2017.anders.tunnelvision.Discarded.NewTest;
 
 
 import java.nio.FloatBuffer;

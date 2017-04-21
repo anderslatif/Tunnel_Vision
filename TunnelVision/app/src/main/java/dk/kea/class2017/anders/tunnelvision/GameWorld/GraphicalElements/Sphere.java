@@ -1,4 +1,4 @@
-package dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.BasicShapes;
+package dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements;
 
 
 import java.nio.ByteBuffer;

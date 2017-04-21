@@ -1,4 +1,4 @@
-package dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements;
+package dk.kea.class2017.anders.tunnelvision.Discarded.BasicShapes;
 
 
 public class Tunnel {

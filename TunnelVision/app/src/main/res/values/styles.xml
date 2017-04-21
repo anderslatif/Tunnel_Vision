@@ -5,13 +5,12 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
 
-        <item name="android:windowBackground">#252222</item>
+        <item name="android:background">#252222</item>
         <item name="android:fontFamily">sans-serif</item>
 
     </style>
-    
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -35,5 +34,5 @@
         <item name="android:shadowRadius">2</item>
     </style>
 
-    
+
 </resources>
