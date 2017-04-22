@@ -13,6 +13,7 @@ import android.opengl.GLU;
 
 import dk.kea.class2017.anders.tunnelvision.Discarded.Calculations.BallPhysicsCalculations;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.Calculations.Ball;
+import dk.kea.class2017.anders.tunnelvision.GameWorld.Calculations.BallCalculations;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Sphere;
 import dk.kea.class2017.anders.tunnelvision.Discarded.BasicShapes.Rectangle3d;
 
@@ -33,7 +34,7 @@ public class GameRenderer implements Renderer {
 
     private Sphere sphere;
     private Ball ball;
-    private BallPhysicsCalculations ballPhysicsCalculations;
+    private BallCalculations ballCalculation;
     private float[] ballCalculations;
 
     public volatile float mLightX = 10f;
@@ -47,7 +48,7 @@ public class GameRenderer implements Renderer {
 
         this.accelerometer = accelerometer;
         sphere = new Sphere();
-        ballPhysicsCalculations = new BallPhysicsCalculations(ball);
+        ballCalculation = new BallCalculations();
     }
 
 
@@ -73,6 +74,9 @@ public class GameRenderer implements Renderer {
         initBuffers();
 
         //todo Anders find a more optimal way
+// plays the drop sound?
+        World.level++;
+        ballCalculation.setNewBallPosition(World.level);
         World.nextLevel();
 
     }
@@ -129,9 +133,11 @@ public class GameRenderer implements Renderer {
         gl.glLightfv(GL10.GL_LIGHT0, GL10.GL_POSITION, mat_posiBuf);
 
 
-        ballCalculations = ballPhysicsCalculations.calculateNextMove(deltaTime);
-        gl.glTranslatef(ballCalculations[0], ballCalculations[2], ballCalculations[4]);
+        ballCalculations = ballCalculation.calculateNextBallPosition(deltaTime, accelerometer);
+        //gl.glTranslatef(ballCalculations[0], ballCalculations[2], ballCalculations[4]);
         sphere.draw(gl);
+
+        // call method that should play sound
 
         // if ball out of bounds then render the restart button
 

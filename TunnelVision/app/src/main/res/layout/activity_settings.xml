@@ -37,9 +37,9 @@
         android:layout_marginTop="11dp"
         android:id="@+id/textView2"
         android:textColor="@android:color/white"
-        tools:text="Can you hear the sweet spot? Rest there and advance to new harder levels. "
         android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:text="Can you hear the sweet spot? Rest there and advance to new harder levels. " />
 
     <TextView
         android:text="Settings"

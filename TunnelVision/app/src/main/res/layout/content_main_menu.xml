@@ -23,6 +23,7 @@
 
         <Button
             android:text="Play"
+            android:onClick="callGameActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_menu_play"
@@ -32,6 +33,7 @@
 
         <Button
             android:text="Settings"
+            android:onClick="callSettingsActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_menu_settings"
@@ -41,6 +43,7 @@
 
         <Button
             android:text="Quit"
+            android:onClick="quitApp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btn_menu_quit"

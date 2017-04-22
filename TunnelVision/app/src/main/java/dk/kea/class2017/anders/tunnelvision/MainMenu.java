@@ -12,6 +12,9 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
+import static dk.kea.class2017.anders.tunnelvision.R.id.btn_menu_play;
+import static dk.kea.class2017.anders.tunnelvision.R.id.btn_menu_settings;
+
 public class MainMenu extends AppCompatActivity {
 
     @Override
@@ -19,22 +22,34 @@ public class MainMenu extends AppCompatActivity {
 /*        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);*/
 
+
+
         // todo for testing we go directly to the game instead of the main menu this should be removed some time in the future
-        callGameActivity(savedInstanceState);
+        callGameActivityTest(savedInstanceState);
     }
 
-    public void callGameActivity(Bundle savedInstanceState) {
-        //Remove title bar
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        //Remove notification bar
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+    public void callGameActivityTest(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
         Intent intent = new Intent(this, GameActivity.class);
         this.startActivity(intent);
+    }
+
+    public void callGameActivity(View view) {
+        setContentView(R.layout.activity_game);
+
+        Intent intent = new Intent(this, GameActivity.class);
+        this.startActivity(intent);
+    }
+
+    public void callSettingsActivity(View view) {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        this.startActivity(intent);
+    }
+
+    public void quitApp(View view) {
+        finish();
     }
 
     @Override
