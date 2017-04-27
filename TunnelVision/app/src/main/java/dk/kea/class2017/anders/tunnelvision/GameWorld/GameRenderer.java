@@ -11,7 +11,6 @@ import javax.microedition.khronos.opengles.GL10;
 import android.opengl.GLSurfaceView.Renderer;
 import android.opengl.GLU;
 
-import dk.kea.class2017.anders.tunnelvision.Discarded.Calculations.BallPhysicsCalculations;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.Calculations.Ball;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.Calculations.BallCalculations;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Sphere;
@@ -34,28 +33,25 @@ public class GameRenderer implements Renderer {
 
     private Sphere sphere;
     private Ball ball;
-    private BallCalculations ballCalculation;
-    private float[] ballCalculations;
+    private BallCalculations ballCalculations;
 
     public volatile float mLightX = 10f;
     public volatile float mLightY = 10f;
     public volatile float mLightZ = 10f;
 
-    Rectangle3d paddle;
 
 
     public GameRenderer(float[] accelerometer) {
 
         this.accelerometer = accelerometer;
         sphere = new Sphere();
-        ballCalculation = new BallCalculations();
+        ballCalculations = new BallCalculations();
     }
 
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig arg1) {
 
-        paddle = new Rectangle3d(gl);
 
         // On the perspective correction
         gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_FASTEST);
@@ -73,12 +69,30 @@ public class GameRenderer implements Renderer {
 
         initBuffers();
 
-        //todo Anders find a more optimal way
-// plays the drop sound?
-        World.level++;
-        ballCalculation.setNewBallPosition(World.level);
+        //todo find a more optimal way
         World.nextLevel();
+        ballCalculations.setNewBallPosition(World.level);
+        World.nextLevel();
+    }
 
+    private void initBuffers() {
+        ByteBuffer bufTemp = ByteBuffer.allocateDirect(mat_ambient.length * 4);
+        bufTemp.order(ByteOrder.nativeOrder());
+        mat_ambient_buf = bufTemp.asFloatBuffer();
+        mat_ambient_buf.put(mat_ambient);
+        mat_ambient_buf.position(0);
+
+        bufTemp = ByteBuffer.allocateDirect(mat_diffuse.length * 4);
+        bufTemp.order(ByteOrder.nativeOrder());
+        mat_diffuse_buf = bufTemp.asFloatBuffer();
+        mat_diffuse_buf.put(mat_diffuse);
+        mat_diffuse_buf.position(0);
+
+        bufTemp = ByteBuffer.allocateDirect(mat_specular.length * 4);
+        bufTemp.order(ByteOrder.nativeOrder());
+        mat_specular_buf = bufTemp.asFloatBuffer();
+        mat_specular_buf.put(mat_specular);
+        mat_specular_buf.position(0);
     }
 
     @Override
@@ -133,38 +147,14 @@ public class GameRenderer implements Renderer {
         gl.glLightfv(GL10.GL_LIGHT0, GL10.GL_POSITION, mat_posiBuf);
 
 
-        ballCalculations = ballCalculation.calculateNextBallPosition(deltaTime, accelerometer);
-        //gl.glTranslatef(ballCalculations[0], ballCalculations[2], ballCalculations[4]);
+        ballCalculations.calculateNextBallPosition(deltaTime, accelerometer);
+        gl.glTranslatef(Ball.x, Ball.y, Ball.z);
         sphere.draw(gl);
 
         // call method that should play sound
 
         // if ball out of bounds then render the restart button
 
-
-
-    }
-
-
-
-    private void initBuffers() {
-        ByteBuffer bufTemp = ByteBuffer.allocateDirect(mat_ambient.length * 4);
-        bufTemp.order(ByteOrder.nativeOrder());
-        mat_ambient_buf = bufTemp.asFloatBuffer();
-        mat_ambient_buf.put(mat_ambient);
-        mat_ambient_buf.position(0);
-
-        bufTemp = ByteBuffer.allocateDirect(mat_diffuse.length * 4);
-        bufTemp.order(ByteOrder.nativeOrder());
-        mat_diffuse_buf = bufTemp.asFloatBuffer();
-        mat_diffuse_buf.put(mat_diffuse);
-        mat_diffuse_buf.position(0);
-
-        bufTemp = ByteBuffer.allocateDirect(mat_specular.length * 4);
-        bufTemp.order(ByteOrder.nativeOrder());
-        mat_specular_buf = bufTemp.asFloatBuffer();
-        mat_specular_buf.put(mat_specular);
-        mat_specular_buf.position(0);
     }
 
 }

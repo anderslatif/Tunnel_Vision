@@ -6,12 +6,12 @@ package dk.kea.class2017.anders.tunnelvision.GameWorld.Calculations;
  */
 public class Ball {
 
-    public float x;
-    public float vx; // velocity x
-    public float y;
-    public float vy;
-    public float z;
-    public float vz;
+    public static float x;
+    public static float vx; // velocity x
+    public static float y;
+    public static float vy;
+    public static float z;
+    public static float vz;
 
 
                 // starting positions
