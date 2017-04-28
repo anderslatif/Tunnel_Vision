@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
+import dk.kea.class2017.anders.tunnelvision.GameWorld.Sounds.SoundUtil;
+
 import static dk.kea.class2017.anders.tunnelvision.R.id.btn_menu_play;
 import static dk.kea.class2017.anders.tunnelvision.R.id.btn_menu_settings;
 
@@ -22,7 +24,9 @@ public class MainMenu extends AppCompatActivity {
 /*        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);*/
 
-
+        // prepare SoundPool already here since it takes time to load and is asynchronous
+        SoundUtil.context = this;
+        SoundUtil.loadSounds();
 
         // todo for testing we go directly to the game instead of the main menu this should be removed some time in the future
         callGameActivityTest(savedInstanceState);

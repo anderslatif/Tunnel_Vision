@@ -12,7 +12,6 @@ public class BallCalculations {
     // todo method to check if the ball is in proximity of the spot
 
     public void calculateNextBallPosition(float deltatime, float[] accelerometer) {
-        SoundUtil.play();
         accelerometerConstant = 4;
 
         Ball.x += -(accelerometer[0]*deltatime/accelerometerConstant);

@@ -6,11 +6,11 @@ import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
 
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GameRenderer;
+import dk.kea.class2017.anders.tunnelvision.GameWorld.Sounds.SoundUtil;
 
 public class OpenGLView extends GLSurfaceView {
 
     private GameRenderer renderer;
-//    private SimpleRenderer renderer;
 
     private float[] accelerometer;
 
@@ -22,7 +22,6 @@ public class OpenGLView extends GLSurfaceView {
         this.accelerometer = accelerometer;
 
         renderer = new GameRenderer(accelerometer);
-        //renderer = new SimpleRenderer(accelerometer);
         this.setRenderer(renderer);
     }
 
@@ -40,11 +39,8 @@ public class OpenGLView extends GLSurfaceView {
             case MotionEvent.ACTION_MOVE:
                 float mX = event.getX();
                 float mY = event.getY();
-                System.out.println("##################mx" + mX);
-                System.out.println("##################my" + mY);
-               /* renderer.mLightX += (mX-mDownX)/10;
-
-                renderer.mLightY -= (mY-mDownY)/10;*/
+                renderer.mLightX += (mX-mDownX)/10;
+                renderer.mLightY -= (mY-mDownY)/10;
                 mDownX = mX;
                 mDownY = mY;
                 return true;

@@ -1,4 +1,4 @@
-package dk.kea.class2017.anders.tunnelvision;
+package dk.kea.class2017.anders.tunnelvision.Discarded;
 
 
 import android.opengl.GLSurfaceView.Renderer;

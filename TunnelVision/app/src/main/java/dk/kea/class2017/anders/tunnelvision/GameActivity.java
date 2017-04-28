@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import dk.kea.class2017.anders.tunnelvision.GameWorld.OpenGLView;
+import dk.kea.class2017.anders.tunnelvision.GameWorld.Sounds.SoundUtil;
 
 public class GameActivity extends AppCompatActivity implements SensorEventListener {
 
