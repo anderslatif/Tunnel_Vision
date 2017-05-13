@@ -21,15 +21,16 @@ public class MainMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-/*        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);*/
+        // todo uncomment these tw lines in test mode
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_menu);
 
         // prepare SoundPool already here since it takes time to load and is asynchronous
         SoundUtil.context = this;
         SoundUtil.loadSounds();
 
-        // todo for testing we go directly to the game instead of the main menu this should be removed some time in the future
-        callGameActivityTest(savedInstanceState);
+/*        // todo for testing we go directly to the game instead of the main menu this should be removed some time in the future
+        callGameActivityTest(savedInstanceState);*/
     }
 
     public void callGameActivityTest(Bundle savedInstanceState) {

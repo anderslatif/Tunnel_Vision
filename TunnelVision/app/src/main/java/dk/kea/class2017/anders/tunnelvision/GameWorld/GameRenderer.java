@@ -14,7 +14,6 @@ import android.opengl.GLU;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.Calculations.Ball;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.Calculations.BallCalculations;
 import dk.kea.class2017.anders.tunnelvision.GameWorld.GraphicalElements.Sphere;
-import dk.kea.class2017.anders.tunnelvision.Discarded.BasicShapes.Rectangle3d;
 
 public class GameRenderer implements Renderer {
 
@@ -32,7 +31,6 @@ public class GameRenderer implements Renderer {
     private FloatBuffer mat_specular_buf;
 
     private Sphere sphere;
-    private Ball ball;
     private BallCalculations ballCalculations;
 
     public volatile float mLightX = 10f;
@@ -69,10 +67,8 @@ public class GameRenderer implements Renderer {
 
         initBuffers();
 
-        //todo find a more optimal way
         World.nextLevel();
         ballCalculations.setNewBallPosition(World.level);
-        World.nextLevel();
     }
 
     private void initBuffers() {
@@ -148,12 +144,14 @@ public class GameRenderer implements Renderer {
 
 
         ballCalculations.calculateNextBallPosition(deltaTime, accelerometer);
+        World.calculateProximity();  // also calls sound methods
         gl.glTranslatef(Ball.x, Ball.y, Ball.z);
         sphere.draw(gl);
 
-        // call method that should play sound
+        if (World.isBallOutOfBounds) {
+            // if ball out of bounds then render the restart button
+        }
 
-        // if ball out of bounds then render the restart button
 
     }
 
