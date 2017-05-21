@@ -11,7 +11,7 @@ import java.io.IOException;
 
 import dk.kea.class2017.anders.tunnelvision.R;
 
-public class SoundUtil {
+public class SoundUtil extends Thread {
 
     public static Context context;
     public static SoundPool soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
@@ -60,50 +60,53 @@ public class SoundUtil {
         soundPool.play(soundIdGameStart, 1, 1, 0, 0, 1);
     }
 
+    static int streamId = 0;
+
     public static void playNote(int soundFileNumber) {
+        soundPool.stop(streamId);
 
         switch (soundFileNumber) {
             case 75:
-                soundPool.play(vibraphone75, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone75, 1, 1, 0, 0, 1);
                 break;
             case 76:
-                soundPool.play(vibraphone76, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone76, 1, 1, 0, 0, 1);
                 break;
             case 77:
-                soundPool.play(vibraphone77, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone77, 1, 1, 0, 0, 1);
                 break;
             case 78:
-                soundPool.play(vibraphone78, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone78, 1, 1, 0, 0, 1);
                 break;
             case 79:
-                soundPool.play(vibraphone79, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone79, 1, 1, 0, 0, 1);
                 break;
             case 80:
-                soundPool.play(vibraphone80, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone80, 1, 1, 0, 0, 1);
                 break;
             case 81:
-                soundPool.play(vibraphone81, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone81, 1, 1, 0, 0, 1);
                 break;
             case 82:
-                soundPool.play(vibraphone82, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone82, 1, 1, 0, 0, 1);
                 break;
             case 83:
-                soundPool.play(vibraphone83, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone83, 1, 1, 0, 0, 1);
                 break;
             case 84:
-                soundPool.play(vibraphone84, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone84, 1, 1, 0, 0, 1);
                 break;
             case 85:
-                soundPool.play(vibraphone85, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone85, 1, 1, 0, 0, 1);
                 break;
             case 86:
-                soundPool.play(vibraphone86, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone86, 1, 1, 0, 0, 1);
                 break;
             case 87:
-                soundPool.play(vibraphone87, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone87, 1, 1, 0, 0, 1);
                 break;
             case 89:
-                soundPool.play(vibraphone88, 1, 1, 0, 0, 1);
+                streamId = soundPool.play(vibraphone88, 1, 1, 0, 0, 1);
                 break;
             default:
                 System.out.println("Unspecified sound file");

@@ -21,7 +21,7 @@ public class MainMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // todo uncomment these tw lines in test mode
+        // todo comment these tw lines in test mode
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
